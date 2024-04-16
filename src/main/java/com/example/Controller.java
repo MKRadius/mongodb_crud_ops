@@ -33,9 +33,14 @@ public class Controller {
             return;
         }
 
+        if (!age.matches("[0-9]+")) {
+            view.display(AlertType.ERROR, "Age must be a number");
+            return;
+        }
+
         Document document = new Document()
                 .append("name", name)
-                .append("age", age)
+                .append("age", Integer.parseInt(age))
                 .append("city", city);
 
         try {
@@ -76,12 +81,17 @@ public class Controller {
             return;
         }
 
+        if (!age.matches("[0-9]+")) {
+            view.display(AlertType.ERROR, "Age must be a number");
+            return;
+        }
+
         ObjectId objectId = new ObjectId(id);
 
         Document document = new Document()
                 .append("_id", objectId)
                 .append("name", name)
-                .append("age", age)
+                .append("age", Integer.parseInt(age))
                 .append("city", city);
 
         try {
